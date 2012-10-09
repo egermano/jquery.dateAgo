@@ -3,7 +3,7 @@ jquery.dateAgo
 
 Plugin for jquery to calculate date from past until current date.
 
-I`m brazilian guy and this plugins works only in brazilian portuguese. In the near future I will create a multilanguage support.
+I'm brazilian guy and in this plugins only works in brazilian portuguese. In the near future I will create a multilanguage support.
 
 Usage
 -----
