@@ -17,7 +17,7 @@ Options
 
 Defaults:
 
-````json
+````javascript
 {
     texts: {
         now: 'just now',
