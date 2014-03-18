@@ -6,11 +6,26 @@
 /**
  * Date Ago
  * @param  object $ jQuery variable 
+ * @param  object options 
  * @return object
  */
 (function($){
 
-    $.fn.dateAgo = function(){
+    $.fn.dateAgo = function(options){
+
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+            texts: {
+                now: 'just now',
+                minutes: 'minutes ago',
+                hour: 'hour ago',
+                hours: 'hours ago',
+                yesterday: 'yesterday',
+                days: 'dasy ago'
+            }
+        }, options );
+
+
         return this.each(function(){
             var baseDate = $(this).text();
 
@@ -27,26 +42,22 @@
                 if(diff<(1000*60*60)){
                     var minutos = Math.floor(diff/(1000*60));
                     if(minutos <= 1)
-                        dataText = 'agora';
-                    else{
-                        dataText = minutos.toString() + ' minutos atrás';
-                    }
+                        dataText = settings.texts.now;
+                    else
+                        dataText = minutos.toString() + ' ' + settings.texts.minutes;
                 }else{
                     var horas = Math.floor(diff/(1000*60*60));
-                    dataText = horas.toString() + (horas==1?' hora atrás':' horas atrás');    
+                    dataText = horas.toString() + (horas==1?' ' + settings.texts.hour:' ' + settings.texts.hours);
                 }
             }else{
                 var dias = Math.floor(diff/(1000*60*60*24));
-                if(dias==1){
-                    dataText = 'ontem';
-                }else{
-                    dataText = dias.toString() + ' dias atrás';    
-                }
+                if(dias==1)
+                    dataText = settings.texts.yesterday;
+                else
+                    dataText = dias.toString() + ' ' + settings.texts.days;
             }
 
             $(this).addClass('dateAgo').text(dataText);
         });
     };
 }(jQuery));
-
-//
