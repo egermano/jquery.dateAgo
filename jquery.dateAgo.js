@@ -1,6 +1,7 @@
 /**
  * Author: Bruno Germano
  * Date: 2012-09-26 19:45
+ * URL: https://github.com/egermano/jquery.dateAgo
  */
 
 /**
